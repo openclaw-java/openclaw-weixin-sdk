@@ -133,7 +133,7 @@ mvn -q -DskipTests compile
 
 - SDK 只负责协议传输、登录流程、监听与媒体链路。
 - SDK 模块不再包含终端 CLI/TUI 入口代码，也不放 shell 启动脚本。
-- 终端交互由 workspace 独立 CLI 项目提供：`../openclaw-weixin-ratatui-cli`。
+- 终端交互由 仓库独立 CLI 项目提供：`../openclaw-weixin-cli`。
 - 使用示例与测试由模块提供：`../openclaw-weixin-examples`。
 
 ## 边界约束

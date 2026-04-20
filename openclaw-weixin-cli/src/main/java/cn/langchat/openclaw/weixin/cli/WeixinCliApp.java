@@ -1,4 +1,4 @@
-package cn.langchat.openclaw.weixin.ratatui;
+package cn.langchat.openclaw.weixin.cli;
 
 import cn.langchat.openclaw.weixin.OpenClawWeixinSdk;
 import cn.langchat.openclaw.weixin.api.WeixinClientConfig;
@@ -55,7 +55,7 @@ import static dev.tamboui.toolkit.Toolkit.*;
  * @since 2026-04-20
  * @author LangChat Team
  */
-public final class WeixinRataTuiApp {
+public final class WeixinCliApp {
     private static final DateTimeFormatter TIME_FMT = DateTimeFormatter.ofPattern("HH:mm:ss");
     private static final int QR_QUIET_ZONE = 1;
     private static final String APP_TITLE = "LangChat OpenClaw Weixin";
@@ -83,7 +83,7 @@ public final class WeixinRataTuiApp {
         new SlashCommand("/quit", "退出程序")
     );
 
-    private final OpenClawWeixinRataCli.LaunchContext launch;
+    private final OpenClawWeixinCli.LaunchContext launch;
     private final FileAccountStore accountStore = new FileAccountStore();
 
     private final List<ChatBubble> chatLines = new ArrayList<>();
@@ -95,7 +95,7 @@ public final class WeixinRataTuiApp {
     private final List<String> chatDraftLines = new ArrayList<>();
 
     private final ConcurrentLinkedQueue<Runnable> uiQueue = new ConcurrentLinkedQueue<>();
-    private final ExecutorService ioExecutor = Executors.newSingleThreadExecutor(new DaemonThreadFactory("weixin-ratatui-io"));
+    private final ExecutorService ioExecutor = Executors.newSingleThreadExecutor(new DaemonThreadFactory("weixin-cli-io"));
 
     private final AtomicBoolean typingSent = new AtomicBoolean(false);
     private final AtomicBoolean typingInFlight = new AtomicBoolean(false);
@@ -120,7 +120,7 @@ public final class WeixinRataTuiApp {
     private volatile long lastMonitorAt = 0L;
     private volatile int selectedAccountIndex = 0;
 
-    public WeixinRataTuiApp(OpenClawWeixinRataCli.LaunchContext launch) {
+    public WeixinCliApp(OpenClawWeixinCli.LaunchContext launch) {
         this.launch = launch;
     }
 
@@ -192,7 +192,7 @@ public final class WeixinRataTuiApp {
 
     private StyleEngine createStyleEngine() throws IOException {
         StyleEngine engine = StyleEngine.create();
-        engine.loadStylesheet("/styles/rata.tcss");
+        engine.loadStylesheet("/styles/cli.tcss");
         return engine;
     }
 
@@ -740,7 +740,7 @@ public final class WeixinRataTuiApp {
             } catch (Exception ex) {
                 uiQueue.offer(() -> addWarn("monitor 崩溃: " + ex.getMessage()));
             }
-        }, "weixin-ratatui-monitor-" + currentAccountId);
+        }, "weixin-cli-monitor-" + currentAccountId);
         monitorThread.setDaemon(true);
         monitorThread.start();
     }

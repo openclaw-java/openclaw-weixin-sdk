@@ -1,8 +1,8 @@
-# openclaw-weixin-ratatui-cli
+# openclaw-weixin-cli
 
 LangChat Team 实现的独立终端聊天工具，底层依赖 `openclaw-weixin-sdk`。
 
-- 模块名：`openclaw-weixin-ratatui-cli`
+- 模块名：`openclaw-weixin-cli`
 - 运行环境：`JDK 17+`
 - UI 技术栈：TamboUI + JLine backend
 
@@ -18,7 +18,7 @@ LangChat Team 实现的独立终端聊天工具，底层依赖 `openclaw-weixin-
 
 ```text
 +-------------------------------+
-| openclaw-weixin-ratatui-cli   |
+| openclaw-weixin-cli   |
 |-------------------------------|
 | TUI 状态机                    |
 | 账号选择 / 扫码登录            |
@@ -51,17 +51,17 @@ LangChat Team 实现的独立终端聊天工具，底层依赖 `openclaw-weixin-
 ## 构建
 
 ```bash
-mvn -DskipTests -pl openclaw-weixin-ratatui-cli -am package
+mvn -DskipTests -pl openclaw-weixin-cli -am package
 ```
 
 构建产物：
 
-- `target/openclaw-weixin-ratatui-cli-<version>.jar`
-- `target/openclaw-weixin-ratatui-cli-<version>-all.jar`
+- `target/openclaw-weixin-cli-<version>.jar`
+- `target/openclaw-weixin-cli-<version>-all.jar`
 
 ## 运行
 
-在 workspace 根目录执行：
+在仓库根目录执行：
 
 ```bash
 ./bin/openclaw-weixin chat
@@ -72,7 +72,7 @@ mvn -DskipTests -pl openclaw-weixin-ratatui-cli -am package
 或者直接运行 fat-jar：
 
 ```bash
-java -jar target/openclaw-weixin-ratatui-cli-0.1.0-SNAPSHOT-all.jar chat
+java -jar target/openclaw-weixin-cli-0.1.0-SNAPSHOT-all.jar chat
 ```
 
 ## 聊天命令

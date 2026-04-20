@@ -28,7 +28,7 @@
 | pairing/allowFrom 鉴权存储 | 完整（插件级） | 未实现（SDK 级暂不内置） | 未对齐 |
 | OpenClaw runtime 路由/会话写回 | 完整（插件耦合） | 未实现（Java 为独立 SDK） | 未对齐（设计差异） |
 | 旧版本兼容迁移（legacy 文件回退） | 完整 | 已实现（account/sync/context 主路径回退） | 基本对齐 |
-| 可执行 CLI 封装（脚本入口） | 依赖 openclaw 插件命令 | 已实现（workspace 根目录 `bin/openclaw-weixin`） | 已对齐（workspace 侧） |
+| 可执行 CLI 封装（脚本入口） | 依赖 openclaw 插件命令 | 已实现（repository 根目录 `bin/openclaw-weixin`） | 已对齐（repository 侧） |
 
 ## 2. 已补充能力（本轮新增）
 

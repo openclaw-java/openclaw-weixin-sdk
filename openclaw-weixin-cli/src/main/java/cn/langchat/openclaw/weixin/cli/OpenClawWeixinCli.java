@@ -1,4 +1,4 @@
-package cn.langchat.openclaw.weixin.ratatui;
+package cn.langchat.openclaw.weixin.cli;
 
 import cn.langchat.openclaw.weixin.api.WeixinClientConfig;
 
@@ -9,13 +9,13 @@ import java.util.Map;
  * @since 2026-04-20
  * @author LangChat Team
  */
-public final class OpenClawWeixinRataCli {
-    private OpenClawWeixinRataCli() {
+public final class OpenClawWeixinCli {
+    private OpenClawWeixinCli() {
     }
 
     public static void main(String[] args) {
         try {
-            new OpenClawWeixinRataCli().run(args);
+            new OpenClawWeixinCli().run(args);
         } catch (Exception ex) {
             System.err.println("ERROR: " + ex.getMessage());
             System.exit(1);
@@ -50,7 +50,7 @@ public final class OpenClawWeixinRataCli {
             opts.containsKey("--new")
         );
 
-        new WeixinRataTuiApp(context).run();
+        new WeixinCliApp(context).run();
     }
 
     private void runLogin(Map<String, String> opts) throws Exception {
@@ -75,7 +75,7 @@ public final class OpenClawWeixinRataCli {
     }
 
     private static void printHelp() {
-        System.out.println("openclaw-weixin RataTUI CLI");
+        System.out.println("openclaw-weixin TUI CLI");
         System.out.println("Usage:");
         System.out.println("  openclaw-weixin chat [--account-id <id>] [--to <userId@im.wechat>] [--new] [--base-url <url>] [--cdn-base-url <url>]");
         System.out.println("  openclaw-weixin login [--account-id <id>] [--base-url <url>] [--cdn-base-url <url>]");

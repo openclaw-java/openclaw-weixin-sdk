@@ -1,8 +1,8 @@
-# openclaw-weixin-ratatui-cli
+# openclaw-weixin-cli
 
 Standalone terminal chat client built by LangChat Team, powered by `openclaw-weixin-sdk`.
 
-- Module: `openclaw-weixin-ratatui-cli`
+- Module: `openclaw-weixin-cli`
 - Runtime: `JDK 17+`
 - UI stack: TamboUI + JLine backend
 
@@ -18,7 +18,7 @@ This project is intentionally separated from the SDK:
 
 ```text
 +-------------------------------+
-| openclaw-weixin-ratatui-cli   |
+| openclaw-weixin-cli   |
 |-------------------------------|
 | TUI state machine             |
 | account picker / QR login     |
@@ -51,17 +51,17 @@ This project is intentionally separated from the SDK:
 ## Build
 
 ```bash
-mvn -DskipTests -pl openclaw-weixin-ratatui-cli -am package
+mvn -DskipTests -pl openclaw-weixin-cli -am package
 ```
 
 Generated artifacts:
 
-- `target/openclaw-weixin-ratatui-cli-<version>.jar`
-- `target/openclaw-weixin-ratatui-cli-<version>-all.jar`
+- `target/openclaw-weixin-cli-<version>.jar`
+- `target/openclaw-weixin-cli-<version>-all.jar`
 
 ## Run
 
-From workspace root:
+From repository root:
 
 ```bash
 ./bin/openclaw-weixin chat
@@ -72,7 +72,7 @@ From workspace root:
 Or directly by jar:
 
 ```bash
-java -jar target/openclaw-weixin-ratatui-cli-0.1.0-SNAPSHOT-all.jar chat
+java -jar target/openclaw-weixin-cli-0.1.0-SNAPSHOT-all.jar chat
 ```
 
 ## Chat Commands

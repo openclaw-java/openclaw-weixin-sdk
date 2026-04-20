@@ -133,7 +133,7 @@ mvn -q -DskipTests compile
 
 - This SDK focuses on protocol transport, login flow, monitor, and media pipeline.
 - SDK module does not include terminal CLI/TUI entry code or shell launcher scripts.
-- Terminal interaction is provided by workspace CLI project: `../openclaw-weixin-ratatui-cli`.
+- Terminal interaction is provided by repository CLI project: `../openclaw-weixin-cli`.
 - Usage examples and tests are provided by: `../openclaw-weixin-examples`.
 
 ## Scope Boundary

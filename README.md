@@ -1,6 +1,6 @@
-# OpenClaw Weixin Workspace
+# openclaw-weixin-sdk
 
-LangChat Team 维护的微信 OpenClaw Java 工程工作区（SDK + CLI + Examples）。
+LangChat Team 维护的微信 OpenClaw Java SDK 仓库（SDK + CLI + Examples）。
 
 English version: [README.en.md](./README.en.md)
 
@@ -15,9 +15,10 @@ English version: [README.en.md](./README.en.md)
 ## 2. 目录说明
 
 ```text
-openclaw-weixin-workspace/
+openclaw-weixin-sdk/
 ├─ README.md                           # 中文主文档
 ├─ README.en.md                        # English documentation
+├─ pom.xml                             # 父工程（聚合构建）
 ├─ bin/
 │  ├─ openclaw-weixin                  # CLI 启动脚本
 │  └─ publish-openclaw-weixin-sdk      # Maven Central 自动化发布脚本
@@ -25,7 +26,7 @@ openclaw-weixin-workspace/
 │  ├─ README.md
 │  ├─ README.zh-CN.md
 │  └─ docs/
-├─ openclaw-weixin-ratatui-cli/        # 独立 RataTUI CLI 项目
+├─ openclaw-weixin-cli/                # 独立 TUI CLI 项目
 │  ├─ README.md
 │  └─ README.zh-CN.md
 └─ openclaw-weixin-examples/           # SDK 示例与测试
@@ -188,7 +189,7 @@ public class QuickStart {
 mvn -q -f openclaw-weixin-sdk/pom.xml -DskipTests compile
 
 # CLI
-mvn -q -f openclaw-weixin-ratatui-cli/pom.xml -DskipTests package
+mvn -q -f openclaw-weixin-cli/pom.xml -DskipTests package
 
 # Examples
 mvn -q -f openclaw-weixin-examples/pom.xml test
@@ -217,5 +218,5 @@ mvn -q -f openclaw-weixin-examples/pom.xml test
 ## 9. 子模块文档
 
 - SDK: `openclaw-weixin-sdk/README.md` / `openclaw-weixin-sdk/README.zh-CN.md`
-- CLI: `openclaw-weixin-ratatui-cli/README.md` / `openclaw-weixin-ratatui-cli/README.zh-CN.md`
+- CLI: `openclaw-weixin-cli/README.md` / `openclaw-weixin-cli/README.zh-CN.md`
 - Examples: `openclaw-weixin-examples/README.md` / `openclaw-weixin-examples/README.zh-CN.md`

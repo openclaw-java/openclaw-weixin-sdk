@@ -28,9 +28,9 @@
   </developers>
 
   <scm>
-    <connection>scm:git:https://github.com/langchat/openclaw-weixin-workspace.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com:langchat/openclaw-weixin-workspace.git</developerConnection>
-    <url>https://github.com/langchat/openclaw-weixin-workspace</url>
+    <connection>scm:git:https://github.com/langchat/openclaw-weixin-sdk.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:langchat/openclaw-weixin-sdk.git</developerConnection>
+    <url>https://github.com/langchat/openclaw-weixin-sdk</url>
     <tag>HEAD</tag>
   </scm>
 

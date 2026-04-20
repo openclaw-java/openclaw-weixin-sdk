@@ -6,8 +6,8 @@ cd "$ROOT"
 MAVEN_REPO_LOCAL="${OPENCLAW_WEIXIN_M2:-$ROOT/.m2/repository}"
 
 if [[ "${1:-}" == "help" || "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
-  mvn -q -Dmaven.repo.local="$MAVEN_REPO_LOCAL" -DskipTests -pl openclaw-weixin-ratatui-cli -am package >/dev/null
-  JAR="$(ls -1 openclaw-weixin-ratatui-cli/target/openclaw-weixin-ratatui-cli-*-all.jar | tail -n 1)"
+  mvn -q -Dmaven.repo.local="$MAVEN_REPO_LOCAL" -DskipTests -pl openclaw-weixin-cli -am package >/dev/null
+  JAR="$(ls -1 openclaw-weixin-cli/target/openclaw-weixin-cli-*-all.jar | tail -n 1)"
   exec java -jar "$JAR" help
 fi
 
@@ -17,7 +17,7 @@ elif [[ "$1" == --* ]]; then
   set -- chat "$@"
 fi
 
-mvn -q -Dmaven.repo.local="$MAVEN_REPO_LOCAL" -DskipTests -pl openclaw-weixin-ratatui-cli -am package
-JAR="$(ls -1 openclaw-weixin-ratatui-cli/target/openclaw-weixin-ratatui-cli-*-all.jar | tail -n 1)"
+mvn -q -Dmaven.repo.local="$MAVEN_REPO_LOCAL" -DskipTests -pl openclaw-weixin-cli -am package
+JAR="$(ls -1 openclaw-weixin-cli/target/openclaw-weixin-cli-*-all.jar | tail -n 1)"
 
 exec java -jar "$JAR" "$@"

@@ -1,12 +1,12 @@
-# OpenClaw Weixin Workspace
+# openclaw-weixin-sdk
 
-Workspace maintained by LangChat Team for Weixin OpenClaw Java integration (SDK + CLI + Examples).
+Repository maintained by LangChat Team for Weixin OpenClaw Java integration (SDK + CLI + Examples).
 
 中文版: [README.md](./README.md)
 
 ## 1. What This Repository Is
 
-This workspace is centered on the **Weixin OpenClaw plugin over iLinkAI protocol**:
+This repository is centered on the **Weixin OpenClaw plugin over iLinkAI protocol**:
 
 - Java protocol SDK (JDK 17+)
 - Standalone terminal CLI/TUI client
@@ -15,14 +15,15 @@ This workspace is centered on the **Weixin OpenClaw plugin over iLinkAI protocol
 ## 2. Repository Layout
 
 ```text
-openclaw-weixin-workspace/
+openclaw-weixin-sdk/
 ├─ README.md
 ├─ README.en.md
+├─ pom.xml
 ├─ bin/
 │  ├─ openclaw-weixin
 │  └─ publish-openclaw-weixin-sdk
 ├─ openclaw-weixin-sdk/
-├─ openclaw-weixin-ratatui-cli/
+├─ openclaw-weixin-cli/
 └─ openclaw-weixin-examples/
 ```
 
@@ -160,7 +161,7 @@ if (login.connected()) {
 
 ```bash
 mvn -q -f openclaw-weixin-sdk/pom.xml -DskipTests compile
-mvn -q -f openclaw-weixin-ratatui-cli/pom.xml -DskipTests package
+mvn -q -f openclaw-weixin-cli/pom.xml -DskipTests package
 mvn -q -f openclaw-weixin-examples/pom.xml test
 ```
 
