@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Maven
+.mvn/
+.m2/
+**/target/
+
+# Logs
+*.log
+
+# Runtime state (override if you want to commit test fixtures)
+.openclaw/

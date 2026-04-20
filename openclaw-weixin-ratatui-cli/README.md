@@ -1,0 +1,101 @@
+# openclaw-weixin-ratatui-cli
+
+Standalone terminal chat client built by LangChat Team, powered by `openclaw-weixin-sdk`.
+
+- Module: `openclaw-weixin-ratatui-cli`
+- Runtime: `JDK 17+`
+- UI stack: TamboUI + JLine backend
+
+## Positioning
+
+This project is intentionally separated from the SDK:
+
+- SDK provides protocol transport and state handling
+- CLI provides interactive terminal UX
+- the CLI module can serve as both production tool and SDK example application
+
+## Architecture
+
+```text
++-------------------------------+
+| openclaw-weixin-ratatui-cli   |
+|-------------------------------|
+| TUI state machine             |
+| account picker / QR login     |
+| slash commands / input box    |
+| monitor events -> chat panel  |
++---------------+---------------+
+                |
+                v
++-------------------------------+
+| openclaw-weixin-sdk           |
++-------------------------------+
+                |
+                v
++-------------------------------+
+| Weixin OpenClaw HTTP APIs     |
++-------------------------------+
+```
+
+## Features
+
+- Full-screen terminal app (alternate screen mode)
+- Startup account selection in TUI
+- In-TUI QR code rendering for login
+- Split layout: main conversation area + side log area
+- Fixed input box at bottom
+- Slash command suggestion when typing `/`
+- Typing status synchronization (`sendtyping`)
+- Monitor loop for inbound messages and media notifications
+
+## Build
+
+```bash
+mvn -DskipTests -pl openclaw-weixin-ratatui-cli -am package
+```
+
+Generated artifacts:
+
+- `target/openclaw-weixin-ratatui-cli-<version>.jar`
+- `target/openclaw-weixin-ratatui-cli-<version>-all.jar`
+
+## Run
+
+From workspace root:
+
+```bash
+./bin/openclaw-weixin chat
+./bin/openclaw-weixin login
+./bin/openclaw-weixin help
+```
+
+Or directly by jar:
+
+```bash
+java -jar target/openclaw-weixin-ratatui-cli-0.1.0-SNAPSHOT-all.jar chat
+```
+
+## Chat Commands
+
+- `/help`
+- `/users`
+- `/to <userId@im.wechat>`
+- `/media <path|url> [caption]`
+- `/login`
+- `/logout`
+- `/clear`
+- `/quit`
+
+## Keybindings
+
+- `Enter`: send message / confirm current action
+- `Ctrl+Enter`: append new line in chat draft
+- `Esc`: clear current input
+- `Ctrl+L`: clear chat + log panes
+- `Ctrl+C`: quit
+
+## Troubleshooting
+
+- If no peer is selected, run `/to <userId@im.wechat>` first.
+- If login state is stale, run `/logout` then `/login`.
+- If you need clean state, set `OPENCLAW_STATE_DIR` to an isolated directory before startup.

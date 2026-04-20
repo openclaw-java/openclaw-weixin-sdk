@@ -1,0 +1,85 @@
+:root {
+    --fg: #e3e3e3;
+    --fg-dim: #8d8d8d;
+    --orange: #f29233;
+    --orange-soft: #d87b2a;
+    --green: #79c07a;
+    --yellow: #efc15a;
+    --red: #d97575;
+}
+
+* {
+    color: var(--fg);
+}
+
+Panel {
+    border-type: rounded;
+    border-color: #3a4658;
+}
+
+#header-panel {
+    border-type: rounded;
+    border-color: #4e4e4e;
+}
+
+#chat-panel {
+    border-type: rounded;
+    border-color: #5a4c40;
+}
+
+#chat-panel:focus {
+    border-type: double;
+    border-color: var(--orange);
+}
+
+#chat-panel ListElement {
+    border: none;
+}
+
+#chat-main-panel {
+    border-type: rounded;
+    border-color: #5a4c40;
+}
+
+#chat-main-panel ListElement {
+    border: none;
+}
+
+#chat-log-panel {
+    border-type: rounded;
+    border-color: #4a4a4a;
+}
+
+#chat-log-panel ListElement {
+    border: none;
+}
+
+#command-panel {
+    border-type: rounded;
+    border-color: #4a4a4a;
+}
+
+#command-panel ListElement {
+    border: none;
+}
+
+#command-panel ListElement-item:selected {
+    color: #ffb066;
+}
+
+#input-panel {
+    border-type: double;
+    border-color: var(--orange-soft);
+}
+
+#input-panel:focus {
+    border-color: var(--orange);
+}
+
+#input-panel TextInputElement {
+    color: #ffffff;
+}
+
+#input-panel TextInputElement:focus {
+    color: #ffffff;
+}
