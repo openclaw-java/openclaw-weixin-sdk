@@ -2,7 +2,7 @@
 
 Java SDK for Tencent OpenClaw Weixin protocol, maintained by LangChat Team.
 
-- Maven: `cn.langchat.openclaw:openclaw-weixin-sdk:0.1.0-SNAPSHOT`
+- Maven: `cn.langchat.openclaw:openclaw-weixin-sdk:0.1.1`
 - Runtime: `JDK 17+`
 - SDK policy: protocol-focused, low dependency footprint, local state persistence for account/session context
 

@@ -130,7 +130,7 @@ App/CLI            OpenClawWeixinSdk       WeixinLongPollMonitor           iLink
 <dependency>
   <groupId>cn.langchat.openclaw</groupId>
   <artifactId>openclaw-weixin-sdk</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 

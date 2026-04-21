@@ -2,7 +2,7 @@
 
 LangChat Team 维护的腾讯 OpenClaw Weixin Java 协议 SDK。
 
-- Maven 坐标：`cn.langchat.openclaw:openclaw-weixin-sdk:0.1.0-SNAPSHOT`
+- Maven 坐标：`cn.langchat.openclaw:openclaw-weixin-sdk:0.1.1`
 - 运行环境：`JDK 17+`
 - 设计原则：以协议传输为核心，依赖尽量收敛，协议状态本地持久化
 
