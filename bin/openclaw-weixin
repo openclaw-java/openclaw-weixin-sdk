@@ -1,18 +1,42 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# -----------------------------------------------------------------------------
+# OpenClaw Weixin launcher
+#
+# NOTE:
+# - This script must stay in: <openclaw-weixin-workspace>/bin/openclaw-weixin
+# - Expected sibling module:  <openclaw-weixin-workspace>/openclaw-weixin-cli
+# - Default behavior: run existing fat-jar from target directly (no Maven call)
+# - Use `./bin/openclaw-weixin rebuild` only when you need to rebuild jar
+# -----------------------------------------------------------------------------
+
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
-MAVEN_REPO_LOCAL="${OPENCLAW_WEIXIN_M2:-$ROOT/.m2/repository}"
 CLI_MODULE="openclaw-weixin-cli"
+
+if [[ ! -d "$CLI_MODULE" || ! -f "$CLI_MODULE/pom.xml" ]]; then
+  echo "ERROR: openclaw-weixin-cli module not found."
+  echo "Please place this script under <workspace>/bin and keep the workspace layout."
+  exit 1
+fi
 
 build_cli() {
   local force_update="${1:-false}"
+  local args=()
   if [[ "$force_update" == "true" ]]; then
-    mvn -U -q -Dmaven.repo.local="$MAVEN_REPO_LOCAL" -DskipTests -pl "$CLI_MODULE" -am clean package
-    return
+    args+=("-U")
   fi
-  mvn -q -Dmaven.repo.local="$MAVEN_REPO_LOCAL" -DskipTests -pl "$CLI_MODULE" -am clean package
+  args+=("-q" "-DskipTests" "-pl" "$CLI_MODULE" "-am" "clean" "package")
+
+  if [[ -n "${OPENCLAW_WEIXIN_M2:-}" ]]; then
+    args+=("-Dmaven.repo.local=${OPENCLAW_WEIXIN_M2}")
+  fi
+  if [[ -n "${OPENCLAW_WEIXIN_MAVEN_SETTINGS:-}" ]]; then
+    args+=("-s" "${OPENCLAW_WEIXIN_MAVEN_SETTINGS}")
+  fi
+
+  mvn "${args[@]}"
 }
 
 resolve_cli_jar() {
@@ -37,9 +61,12 @@ validate_cli_jar() {
 }
 
 if [[ "${1:-}" == "help" || "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
-  build_cli false >/dev/null
   JAR="$(resolve_cli_jar)"
   if ! validate_cli_jar "$JAR"; then
+    if ! command -v mvn >/dev/null 2>&1; then
+      echo "ERROR: CLI fat-jar not found. Run: ./bin/openclaw-weixin rebuild"
+      exit 1
+    fi
     build_cli true >/dev/null
     JAR="$(resolve_cli_jar)"
   fi
@@ -61,10 +88,14 @@ elif [[ "$1" == --* ]]; then
   set -- chat "$@"
 fi
 
-build_cli false
 JAR="$(resolve_cli_jar)"
 if ! validate_cli_jar "$JAR"; then
-  echo "Detected incomplete CLI fat-jar, forcing full update rebuild..."
+  if ! command -v mvn >/dev/null 2>&1; then
+    echo "ERROR: CLI fat-jar not found or invalid, and Maven is unavailable."
+    echo "Please build first: ./bin/openclaw-weixin rebuild"
+    exit 1
+  fi
+  echo "Detected missing/incomplete CLI fat-jar, rebuilding..."
   build_cli true
   JAR="$(resolve_cli_jar)"
 fi
